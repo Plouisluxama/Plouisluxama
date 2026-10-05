@@ -34,7 +34,7 @@
 <body>
 <main class="wrap">
 <header class="top">
-<div class="brand" id="brand"><div class="crest">K</div><div><div class="title">Kigali Life <span class="live">● LIVE WORLD</span></div><div class="sub">Shared city simulator · Kigali, Rwanda</div></div></div>
+<div class="brand" id="brand"><div class="crest">K</div><div><div class="title">Kigali Life <span class="live">● WORLD PROTOTYPE</span></div><div class="sub">Shared city simulator · Kigali, Rwanda</div></div></div>
 <div class="stats"><div class="pill">💰 RWF <b id="money">100,000</b></div><div class="pill">⚡ <b id="energy">78</b>%</div><div class="pill">⭐ <b id="rep">0</b></div><div class="pill">👥 <b id="online">1</b> nearby</div></div>
 </header>
 
@@ -47,6 +47,7 @@
 <div class="loc gov" style="left:55%;top:31%" data-name="Kacyiru" data-type="gov"><span>Kacyiru</span></div>
 <div class="loc gov" style="left:60%;top:22%" data-name="Parliament" data-type="gov"><span>Parliament</span></div>
 <div class="loc" style="left:57%;top:45%" data-name="Kigali CBD"><span>Kigali CBD</span></div>
+<div class="loc gov" style="left:43%;top:29%" data-name="Kigali Genocide Memorial" data-type="tour"><span>Genocide Memorial</span></div>
 <div class="loc" style="left:27%;top:48%" data-name="Nyamirambo"><span>Nyamirambo</span></div>
 <div class="loc" style="left:70%;top:72%" data-name="Kicukiro Centre"><span>Kicukiro</span></div>
 <div class="loc" style="left:78%;top:28%" data-name="Kimironko Market"><span>Kimironko Market</span></div>
@@ -54,7 +55,6 @@
 <div class="loc tour" style="left:68%;top:55%" data-name="Kigali Convention Centre" data-type="tour"><span>KCC</span></div>
 <div class="loc sport" style="left:75%;top:40%" data-name="BK Arena" data-type="sport"><span>BK Arena</span></div>
 <div class="loc sport" style="left:84%;top:38%" data-name="Amahoro Stadium" data-type="sport"><span>Amahoro</span></div>
-<div class="loc tour" style="left:38%;top:37%" data-name="Kigali Genocide Memorial" data-type="tour"><span>Genocide Memorial</span></div>
 <div class="loc tour" style="left:76%;top:57%" data-name="Nyandungu Eco-Park" data-type="tour"><span>Nyandungu</span></div>
 <div class="loc tour" style="left:22%;top:66%" data-name="Kigali Cultural Village" data-type="tour"><span>Cultural Village</span></div>
 <div class="loc tour" style="left:44%;top:78%" data-name="Fazenda Sengha" data-type="tour"><span>Fazenda Sengha</span></div>
@@ -85,11 +85,11 @@
 
 <div id="tab-transport" hidden>
 <h2>Move around Kigali</h2>
-<div class="transport-card"><div class="brandmark">T</div><div><b>Tap&Go Bus</b><div class="muted">City buses · smart-card fares</div></div><button class="job button" data-ride="bus">Ride</button></div>
+<div class="transport-card"><div class="brandmark">T</div><div><b>Public bus · Tap&Go</b><div class="muted">Kigali bus travel · Tap&Go payment system</div></div><button class="job button" data-ride="bus">Ride</button></div>
 <div class="transport-card" style="margin-top:8px"><div class="brandmark">M</div><div><b>MOVE</b><div class="muted">Car ride · Volkswagen Mobility Solutions</div></div><button class="job button" data-ride="move">Ride</button></div>
 <div class="transport-card" style="margin-top:8px"><div class="brandmark">Y</div><div><b>Yego</b><div class="muted">Moto / taxi ride-hailing</div></div><button class="job button" data-ride="yego">Ride</button></div>
-<div class="transport-card" style="margin-top:8px"><div class="brandmark">K</div><div><b>KBS / Royal Express</b><div class="muted">Recognizable city bus operators</div></div><button class="job button" data-ride="citybus">Ride</button></div>
-<div class="event" style="margin-top:10px"><strong>Transport rule</strong><br><span class="muted">The game uses verified transport concepts and operator names. Exact fares/routes will be added from current official transport data before production launch.</span></div>
+<div class="transport-card" style="margin-top:8px"><div class="brandmark">T</div><div><b>Tugende</b><div class="muted">Kigali ride service · city and airport trips</div></div><button class="job button" data-ride="tugende">Ride</button></div>
+<div class="event" style="margin-top:10px"><strong>Transport rule</strong><br><span class="muted">Transport names are grounded in current Kigali sources. The RWF amounts shown in this prototype are game-balance values, not advertised real-world fares. Routes and exact fares will be verified again before launch.</span></div>
 </div>
 
 <div id="tab-events" hidden>
@@ -105,7 +105,7 @@
 
 <div class="panel wide">
 <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:10px">
-<div class="status"><span>🌆 World</span><b>LIVE</b></div>
+<div class="status"><span>🌆 World</span><b>Prototype</b></div>
 <div class="status"><span>🚌 Transit</span><b id="transit">Active</b></div>
 <div class="status"><span>🎉 Events</span><b>3 tonight</b></div>
 <div class="status"><span>🗺️ Map</span><b>13+ hubs</b></div>
@@ -125,7 +125,7 @@
 
 <script>
 (()=>{const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)], money=$('#money'),energy=$('#energy'),rep=$('#rep'),feed=$('#feed'),toast=$('#toast'),player=$('#player'),players=$('#players');let state={money:100000,energy:78,rep:0,name:'You',path:'Young Professional',place:'Kigali CBD'};
-const localPlayers=['Aline · KCC','Jean · Kimironko','Mutesi · Nyamirambo'];let channel=null;
+const localPlayers=[];let channel=null;
 function render(){money.textContent=state.money.toLocaleString();energy.textContent=state.energy;rep.textContent=state.rep;players.innerHTML='<span class="playerchip">'+state.name+' · '+state.place+'</span>'+localPlayers.map(x=>'<span class="playerchip">● '+x+'</span>').join('');$('#online').textContent=localPlayers.length+1}
 function say(t){const d=document.createElement('div');d.className='msg';d.textContent=t;feed.prepend(d);while(feed.children.length>8)feed.lastChild.remove()}
 function notify(t){toast.textContent=t;toast.classList.add('show');setTimeout(()=>toast.classList.remove('show'),1900)}
@@ -141,12 +141,12 @@ if(a==='club'){moveTo('Nyamirambo');state.energy=Math.max(0,state.energy-9);stat
 if(a==='airport'){moveTo('KGL Airport');state.energy=Math.max(0,state.energy-4);state.rep+=2;say(state.name+' checked arrivals at Kigali International Airport.')}
 if(a==='park'){moveTo('Nyandungu Eco-Park');state.energy=Math.max(0,state.energy-5);state.rep+=4;say(state.name+' explored the wetland trails.')}
 render()}));
-$$('[data-ride]').forEach(b=>b.addEventListener('click',()=>{const r=b.dataset.ride;if(r==='bus')spendRide(500,2,'Tap&Go bus');if(r==='move')spendRide(2500,3,'MOVE');if(r==='yego')spendRide(1200,3,'Yego');if(r==='citybus')spendRide(600,2,'city bus')}));
+$$('[data-ride]').forEach(b=>b.addEventListener('click',()=>{const r=b.dataset.ride;if(r==='bus')spendRide(500,2,'Tap&Go bus');if(r==='move')spendRide(2500,3,'MOVE');if(r==='yego')spendRide(1200,3,'Yego');if(r==='tugende')spendRide(2200,3,'Tugende')}));
 $$('[data-event]').forEach(b=>b.addEventListener('click',()=>{const e=b.dataset.event;if(e==='arena')moveTo('BK Arena');if(e==='culture')moveTo('Kigali Cultural Village');if(e==='park')moveTo('Nyandungu Eco-Park');state.rep+=6;say(state.name+' joined a city event with nearby players.');notify('Event joined · shared activity');render()}));
 $$('.tab').forEach(t=>t.addEventListener('click',()=>{$$('.tab').forEach(x=>x.classList.remove('active'));t.classList.add('active');['life','transport','events'].forEach(id=>$('#tab-'+id).hidden=id!==t.dataset.tab)}));
 $('#brand').onclick=()=>$('#modal').classList.add('open');$('#close').onclick=()=>$('#modal').classList.remove('open');$('#start').onclick=()=>{const n=$('#name').value.trim();if(n)state.name=n;state.path=$('#path').value;$('#modal').classList.remove('open');say('Welcome '+state.name+'. Your '+state.path+' journey begins in Kigali.');render()};
 try{channel=new BroadcastChannel('kigali-life-demo');channel.onmessage=e=>{if(e.data?.type==='player'){const p=e.data.player;if(!localPlayers.includes(p))localPlayers.push(p);render()}};setInterval(()=>channel.postMessage({type:'player',player:state.name+' · '+state.place}),5000)}catch(e){}
-say('Kigali is alive. Pick a destination, catch a bus, join an event or build your career.');render();
+say('Kigali is ready. Pick a destination, catch a bus, join an event or build your career.');render();
 })();
 </script>
 </body>
