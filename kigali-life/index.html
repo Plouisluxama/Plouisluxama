@@ -47,7 +47,11 @@
 <div class="loc gov" style="left:55%;top:31%" data-name="Kacyiru" data-type="gov"><span>Kacyiru</span></div>
 <div class="loc gov" style="left:60%;top:22%" data-name="Parliament" data-type="gov"><span>Parliament</span></div>
 <div class="loc" style="left:57%;top:45%" data-name="Kigali CBD"><span>Kigali CBD</span></div>
-<div class="loc gov" style="left:43%;top:29%" data-name="Kigali Genocide Memorial" data-type="tour"><span>Genocide Memorial</span></div>
+<div class="loc tour" style="left:43%;top:29%" data-name="Kigali Genocide Memorial" data-type="tour"><span>Genocide Memorial</span></div>
+<div class="loc" style="left:35%;top:55%" data-name="UR Nyarugenge Campus" data-type="school"><span>UR Nyarugenge</span></div>
+<div class="loc" style="left:30%;top:73%" data-name="UR Gikondo Campus" data-type="school"><span>UR Gikondo</span></div>
+<div class="loc" style="left:69%;top:20%" data-name="UR Remera Campus" data-type="school"><span>UR Remera</span></div>
+<div class="loc" style="left:78%;top:17%" data-name="AUCA Masoro Campus" data-type="school"><span>AUCA Masoro</span></div>
 <div class="loc" style="left:27%;top:48%" data-name="Nyamirambo"><span>Nyamirambo</span></div>
 <div class="loc" style="left:70%;top:72%" data-name="Kicukiro Centre"><span>Kicukiro</span></div>
 <div class="loc" style="left:78%;top:28%" data-name="Kimironko Market"><span>Kimironko Market</span></div>
@@ -56,6 +60,7 @@
 <div class="loc sport" style="left:75%;top:40%" data-name="BK Arena" data-type="sport"><span>BK Arena</span></div>
 <div class="loc sport" style="left:84%;top:38%" data-name="Amahoro Stadium" data-type="sport"><span>Amahoro</span></div>
 <div class="loc tour" style="left:76%;top:57%" data-name="Nyandungu Eco-Park" data-type="tour"><span>Nyandungu</span></div>
+<div class="loc tour" style="left:72%;top:14%" data-name="Kigali Innovation City" data-type="tour"><span>Innovation City</span></div>
 <div class="loc tour" style="left:22%;top:66%" data-name="Kigali Cultural Village" data-type="tour"><span>Cultural Village</span></div>
 <div class="loc tour" style="left:44%;top:78%" data-name="Fazenda Sengha" data-type="tour"><span>Fazenda Sengha</span></div>
 <div class="loc" style="left:48%;top:51%" data-name="City Hall" data-type="gov"><span>City Hall</span></div>
@@ -71,7 +76,7 @@
 <h2>Your life</h2><div class="actions">
 <button class="action" data-action="home"><b>🏠 Rest at home</b><small>Recover +28 energy</small></button>
 <button class="action" data-action="eat"><b>🍲 Eat locally</b><small>RWF 1,500 · +14 energy</small></button>
-<button class="action" data-action="school"><b>🎓 Go to school</b><small>Learn + reputation</small></button>
+<button class="action" data-action="school"><b>🎓 Attend university</b><small>Choose a Kigali campus</small></button>
 <button class="action" data-action="club"><b>🪩 Go to a club</b><small>Meet players · +social</small></button>
 <button class="action" data-action="airport"><b>✈️ Go to airport</b><small>Arrivals, departures, diaspora</small></button>
 <button class="action" data-action="park"><b>🌿 Explore Nyandungu</b><small>Walk, cycle, picnic</small></button>
@@ -108,7 +113,7 @@
 <div class="status"><span>🌆 World</span><b>Prototype</b></div>
 <div class="status"><span>🚌 Transit</span><b id="transit">Active</b></div>
 <div class="status"><span>🎉 Events</span><b>3 tonight</b></div>
-<div class="status"><span>🗺️ Map</span><b>13+ hubs</b></div>
+<div class="status"><span>🗺️ Map</span><b>18+ hubs</b></div>
 </div>
 <div class="section"><h2>City identity layer</h2><div style="display:grid;grid-template-columns:repeat(4,1fr);gap:10px">
 <div><b>🏛️ Civic Kigali</b><div class="sub">Kacyiru, Parliament, City Hall and the administrative quarter.</div></div>
@@ -136,7 +141,7 @@ $$('[data-job]').forEach(b=>b.addEventListener('click',()=>{const pay=Number(b.d
 $$('[data-action]').forEach(b=>b.addEventListener('click',()=>{const a=b.dataset.action;
 if(a==='home'){state.energy=Math.min(100,state.energy+28);say(state.name+' rested at home.')}
 if(a==='eat'){if(state.money<1500){notify('Not enough RWF.');return}state.money-=1500;state.energy=Math.min(100,state.energy+14);say(state.name+' grabbed a meal.')}
-if(a==='school'){moveTo('Kigali CBD');state.energy=Math.max(0,state.energy-10);state.rep+=4;say(state.name+' attended a class and met other students.')}
+if(a==='school'){const campuses=['UR Nyarugenge Campus','UR Gikondo Campus','UR Remera Campus','AUCA Masoro Campus'];moveTo(campuses[Math.floor(Math.random()*campuses.length)]);state.energy=Math.max(0,state.energy-10);state.rep+=4;say(state.name+' attended class and met other students.')}
 if(a==='club'){moveTo('Nyamirambo');state.energy=Math.max(0,state.energy-9);state.rep+=5;say(state.name+' joined the nightlife crowd.')}
 if(a==='airport'){moveTo('KGL Airport');state.energy=Math.max(0,state.energy-4);state.rep+=2;say(state.name+' checked arrivals at Kigali International Airport.')}
 if(a==='park'){moveTo('Nyandungu Eco-Park');state.energy=Math.max(0,state.energy-5);state.rep+=4;say(state.name+' explored the wetland trails.')}
